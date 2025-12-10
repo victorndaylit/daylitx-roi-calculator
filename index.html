@@ -78,7 +78,7 @@
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 28px;
         }
 
         .form-group {
@@ -118,6 +118,62 @@
             margin-top: 4px;
         }
 
+        /* Slider styles */
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slider-group input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            background: #e5e5e5;
+            border-radius: 4px;
+            outline: none;
+            padding: 0;
+            border: none;
+        }
+
+        .slider-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--burgundy-600);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(77, 21, 32, 0.3);
+        }
+
+        .slider-group input[type="range"]::-webkit-slider-thumb:hover {
+            background: var(--burgundy-400);
+            transform: scale(1.1);
+        }
+
+        .slider-group input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--burgundy-600);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(77, 21, 32, 0.3);
+        }
+
+        .slider-group input[type="number"] {
+            width: 80px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .slider-group input[type="number"].wide {
+            width: 100px;
+        }
+
         .calculate-btn {
             width: 100%;
             padding: 16px 32px;
@@ -129,7 +185,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            margin-top: 8px;
+            margin-top: 32px;
         }
 
         .calculate-btn:hover {
@@ -152,15 +208,154 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .tier-badge {
-            display: inline-block;
-            padding: 6px 16px;
+        .areas-improvement {
+            margin-bottom: 20px;
+        }
+
+        .areas-improvement-title {
+            font-weight: 600;
+            color: var(--burgundy-600);
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .improvement-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .improvement-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
             background: var(--yellow-200);
             color: var(--burgundy-600);
             border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .improvement-tag:hover {
+            background: var(--yellow-300);
+            transform: translateY(-1px);
+        }
+
+        .improvement-tag.active {
+            background: var(--burgundy-600);
+            color: white;
+            border-color: var(--burgundy-600);
+        }
+
+        .improvement-tag .tag-icon {
+            font-size: 1rem;
+        }
+
+        .improvement-tag .expand-icon {
+            font-size: 0.7rem;
+            margin-left: 4px;
+            transition: transform 0.2s ease;
+        }
+
+        .improvement-tag.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .improvement-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .improvement-card {
+            background: white;
+            border: 2px solid var(--yellow-200);
+            border-radius: 12px;
+            padding: 20px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .improvement-card.visible {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .improvement-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .improvement-card-icon {
+            font-size: 1.5rem;
+        }
+
+        .improvement-card-title {
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 1.1rem;
+            color: var(--burgundy-600);
+        }
+
+        .improvement-card-why {
+            background: var(--yellow-100);
+            border-radius: 8px;
+            padding: 12px 16px;
             margin-bottom: 16px;
+        }
+
+        .improvement-card-why-label {
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--burgundy-400);
+            margin-bottom: 6px;
+        }
+
+        .improvement-card-why-text {
+            font-size: 0.95rem;
+            color: var(--burgundy-600);
+            line-height: 1.5;
+        }
+
+        .improvement-card-how-label {
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--burgundy-400);
+            margin-bottom: 10px;
+        }
+
+        .improvement-card-features {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .improvement-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--burgundy-600);
+        }
+
+        .improvement-feature-check {
+            color: #2e7d32;
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
         .industry-benchmark {
@@ -195,12 +390,41 @@
             color: #c62828;
         }
 
-        .roi-highlight {
+        .hero-highlight {
             text-align: center;
-            padding: 32px;
+            padding: 40px 32px;
             background: linear-gradient(135deg, var(--burgundy-600) 0%, var(--burgundy-400) 100%);
             border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .hero-highlight .roi-value {
+            font-size: 4.5rem;
+        }
+
+        .secondary-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
             margin-bottom: 24px;
+        }
+
+        .secondary-highlight {
+            text-align: center;
+            padding: 24px 20px;
+            border-radius: 12px;
+        }
+
+        .secondary-highlight .roi-value {
+            font-size: 2.5rem;
+        }
+
+        .dso-highlight {
+            background: linear-gradient(135deg, #1a5f4a 0%, #2e7d32 100%);
+        }
+
+        .payback-highlight {
+            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
         }
 
         .roi-label {
@@ -275,6 +499,61 @@
             margin-top: 24px;
             padding-top: 24px;
             border-top: 1px solid #eee;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 32px;
+            padding: 32px;
+            background: linear-gradient(135deg, var(--yellow-100) 0%, var(--yellow-200) 100%);
+            border-radius: 12px;
+        }
+
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--burgundy-600);
+            margin-bottom: 8px;
+        }
+
+        .cta-subtitle {
+            font-size: 1rem;
+            color: var(--burgundy-400);
+            margin-bottom: 24px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 24px;
+            background: var(--burgundy-600);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--burgundy-400);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(77, 21, 32, 0.3);
+        }
+
+        .cta-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--yellow-200);
+            border-radius: 6px;
+            color: var(--burgundy-600);
         }
 
         /* Tooltip styles */
@@ -393,11 +672,17 @@
             h1 {
                 font-size: 1.75rem;
             }
-            .roi-value {
-                font-size: 2.5rem;
+            .hero-highlight .roi-value {
+                font-size: 3rem;
+            }
+            .secondary-highlight .roi-value {
+                font-size: 2rem;
             }
             .card {
                 padding: 20px;
+            }
+            .secondary-highlights {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -417,7 +702,7 @@
                 </svg>
             </div>
             <h1>Daylit X ROI Calculator</h1>
-            <p class="subtitle">See how Daylit X can improve your accounts receivable operations</p>
+            <p class="subtitle">See how Daylit X can get you paid faster</p>
         </header>
 
         <div class="card">
@@ -436,13 +721,16 @@
 
                 <div class="form-group">
                     <label for="annual_revenue">Annual Revenue (ARR)</label>
-                    <input type="number" id="annual_revenue" placeholder="e.g., 10000000" min="0">
+                    <input type="text" id="annual_revenue" placeholder="e.g., 10,000,000" value="10,000,000" oninput="formatNumberInput(this)">
                     <span class="input-hint">USD per year</span>
                 </div>
 
                 <div class="form-group">
                     <label for="ar_headcount">A/R Team Headcount</label>
-                    <input type="number" id="ar_headcount" placeholder="e.g., 5" min="1">
+                    <div class="slider-group">
+                        <input type="range" id="ar_headcount_slider" min="1" max="20" value="5" oninput="syncSlider('ar_headcount')">
+                        <input type="number" id="ar_headcount" placeholder="e.g., 5" min="1" max="50" value="5" oninput="syncNumber('ar_headcount')">
+                    </div>
                     <span class="input-hint">Number of FTEs managing A/R</span>
                 </div>
 
@@ -451,23 +739,20 @@
                         <span class="tooltip-wrapper">
                             Current DSO (Days)
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Days Sales Outstanding: The average number of days it takes to collect payment after a sale is made. Lower DSO = faster cash collection.</span>
+                            <span class="tooltip">Days Sales Outstanding: The average number of days it takes to collect payment after a sale is made.</span>
                         </span>
                     </label>
-                    <input type="number" id="current_dso" placeholder="e.g., 45" min="1">
+                    <div class="slider-group">
+                        <input type="range" id="current_dso_slider" min="15" max="120" value="45" oninput="syncSlider('current_dso')">
+                        <input type="number" id="current_dso" placeholder="e.g., 45" min="1" max="180" value="45" oninput="syncNumber('current_dso')">
+                    </div>
                     <span class="input-hint">Days Sales Outstanding</span>
                 </div>
 
                 <div class="form-group">
                     <label for="monthly_invoices">Monthly Invoices</label>
-                    <input type="number" id="monthly_invoices" placeholder="e.g., 2000" min="1">
+                    <input type="text" id="monthly_invoices" placeholder="e.g., 2,000" value="2,000" oninput="formatNumberInput(this)">
                     <span class="input-hint">Number of invoices per month</span>
-                </div>
-
-                <div class="form-group">
-                    <label for="fte_salary">Average FTE Salary</label>
-                    <input type="number" id="fte_salary" placeholder="e.g., 80000" min="0">
-                    <span class="input-hint">USD per year (base salary)</span>
                 </div>
 
                 <div class="form-group">
@@ -478,7 +763,7 @@
                             <span class="tooltip">Percentage of accounts receivable that becomes uncollectible and is written off annually.</span>
                         </span>
                     </label>
-                    <input type="number" id="bad_debt_pct" placeholder="e.g., 1" min="0" max="100" step="0.1">
+                    <input type="number" id="bad_debt_pct" placeholder="e.g., 1" min="0" max="100" step="0.1" value="1">
                     <span class="input-hint">Percentage of A/R written off</span>
                 </div>
             </div>
@@ -490,19 +775,42 @@
             <div class="card">
                 <h2 class="card-title">Your Daylit X ROI</h2>
                 
-                <span class="tier-badge" id="tier-badge">Small</span>
+                <div class="areas-improvement" id="areas-improvement"></div>
 
                 <div class="industry-benchmark" id="industry-benchmark"></div>
 
-                <div class="roi-highlight">
+                <div class="hero-highlight">
                     <div class="roi-label">
                         <span class="roi-label-wrapper">
                             Return on Investment
                             <span class="info-icon">i</span>
-                            <span class="tooltip">ROI = ((Employee Savings + Bad Debt Savings) − Daylit X Cost) ÷ Daylit X Cost × 100. Cash flow improvement is reported separately as it represents freed capital, not recurring savings.</span>
+                            <span class="tooltip">ROI = ((Manual Work Savings + Bad Debt Savings) − Daylit X Cost) ÷ Daylit X Cost × 100. Cash flow improvement is reported separately as it represents freed capital, not recurring savings.</span>
                         </span>
                     </div>
                     <div class="roi-value" id="roi-value">0%</div>
+                </div>
+
+                <div class="secondary-highlights">
+                    <div class="secondary-highlight dso-highlight">
+                        <div class="roi-label">
+                            <span class="roi-label-wrapper">
+                                DSO Improvement
+                                <span class="info-icon">i</span>
+                                <span class="tooltip">Days Sales Outstanding reduction with Daylit X. Formula: Current DSO × 40% improvement. Lower DSO means faster cash collection.</span>
+                            </span>
+                        </div>
+                        <div class="roi-value" id="dso-improvement">0 days</div>
+                    </div>
+                    <div class="secondary-highlight payback-highlight">
+                        <div class="roi-label">
+                            <span class="roi-label-wrapper">
+                                Payback Period
+                                <span class="info-icon">i</span>
+                                <span class="tooltip">Time to recoup your investment. Formula: Daylit X Cost ÷ Annual Savings. Shows how quickly the solution pays for itself.</span>
+                            </span>
+                        </div>
+                        <div class="roi-value" id="payback-period">0 mo</div>
+                    </div>
                 </div>
 
                 <div class="metrics-grid">
@@ -515,9 +823,9 @@
                         </div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="employee-savings">$0</div>
+                        <div class="metric-value" id="manual-work-savings">$0</div>
                         <div class="metric-label-wrapper">
-                            <span class="metric-label">Employee Savings</span>
+                            <span class="metric-label">Manual Work Savings</span>
                             <span class="info-icon">i</span>
                             <span class="tooltip">Annual cost savings from A/R automation. Formula: Headcount × Hours on Invoices × Time Saved  × Hourly Wage. Represents time that can be reallocated to higher-value work.</span>
                         </div>
@@ -525,7 +833,7 @@
                     <div class="metric-card">
                         <div class="metric-value" id="hours-saved">0</div>
                         <div class="metric-label-wrapper">
-                            <span class="metric-label">Hours Saved Annually</span>
+                            <span class="metric-label">Hours Saved for Strategic Work</span>
                             <span class="info-icon">i</span>
                             <span class="tooltip">Total hours freed up annually. Formula: A/R Headcount × 2,000 work hours (40 hours per week * 50 weeks per year) × productivity gain × 80% time spent on invoices.</span>
                         </div>
@@ -535,15 +843,23 @@
                         <div class="metric-label-wrapper">
                             <span class="metric-label">Bad Debt Savings</span>
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Reduction in uncollectible receivables. Formula: Estimated A/R Balance × Bad Debt Rate × 40% improvement with Daylit X. Better follow-up = fewer write-offs.</span>
+                            <span class="tooltip">Reduction in uncollectible receivables. Formula: Estimated A/R Balance × Bad Debt Rate × 90% improvement with Daylit X. Better follow-up = fewer write-offs.</span>
                         </div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="opportunity-cost">$0</div>
-                        <div class="metric-label-wrapper">
-                            <span class="metric-label">Opportunity Cost Avoided</span>
+                        <div class="metric-value" id="opportunity-cost-savings">$0</div>
+                        <div class="metric-label-wrapper"> 
+                            <span class="metric-label">Opportunity Cost Savings</span>
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Value of savings if invested. Formula: Total Annual Savings × 4.5% cost of capital (might change this to FED 10 Year Treasury rate). Represents what you lose by not capturing these savings sooner.</span>
+                            <span class="tooltip">Potential returns if savings were invested. Formula: Total Annual Savings × 10% (S&P 500 historical average). Represents the growth you miss by not capturing these savings sooner.</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="total-savings">$0</div>
+                        <div class="metric-label-wrapper">
+                            <span class="metric-label">Total Annual Savings</span>
+                            <span class="info-icon">i</span>
+                            <span class="tooltip">Combined recurring annual savings. Formula: Manual Work Savings + Bad Debt Savings. This is the total used for ROI calculation.</span>
                         </div>
                     </div>
                 </div>
@@ -557,11 +873,103 @@
                     * Calculations are estimates based on industry averages and provided inputs. 
                     Actual results may vary. Contact us for a personalized assessment.
                 </p>
+
+                <div class="cta-section">
+                    <h3 class="cta-title">Ready to get paid faster?</h3>
+                    <p class="cta-subtitle">See how Daylit X can transform your accounts receivable operations with a personalized demo.</p>
+                    <a href="https://www.daylit.com/demo" target="_blank" class="cta-button">
+                        <span>Book a Demo</span>
+                        <span class="cta-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="4" width="4" height="4" rx="1" fill="currentColor"/>
+                                <rect x="12" y="4" width="4" height="4" rx="1" fill="currentColor"/>
+                                <rect x="8" y="8" width="4" height="4" rx="1" fill="currentColor"/>
+                                <rect x="4" y="12" width="4" height="4" rx="1" fill="currentColor"/>
+                                <rect x="12" y="12" width="4" height="4" rx="1" fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        // ========================
+        // Improvement Card Toggle
+        // ========================
+        function toggleImprovement(id) {
+            const tag = document.querySelector(`[data-improvement="${id}"]`);
+            const card = document.getElementById(`improvement-card-${id}`);
+            
+            if (tag && card) {
+                const isActive = tag.classList.contains('active');
+                
+                // Close all other cards
+                document.querySelectorAll('.improvement-tag').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.improvement-card').forEach(c => c.classList.remove('visible'));
+                
+                // Toggle this one
+                if (!isActive) {
+                    tag.classList.add('active');
+                    card.classList.add('visible');
+                }
+            }
+        }
+
+        // ========================
+        // Number Formatting Functions
+        // ========================
+        function formatNumberInput(input) {
+            // Get cursor position
+            const cursorPos = input.selectionStart;
+            const oldLength = input.value.length;
+            
+            // Remove non-numeric characters except decimal
+            let value = input.value.replace(/[^\d.]/g, '');
+            
+            // Split by decimal if present
+            const parts = value.split('.');
+            
+            // Add commas to the integer part
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            
+            // Rejoin with decimal if there was one
+            input.value = parts.join('.');
+            
+            // Adjust cursor position based on added/removed characters
+            const newLength = input.value.length;
+            const diff = newLength - oldLength;
+            input.setSelectionRange(cursorPos + diff, cursorPos + diff);
+        }
+
+        function parseNumberWithCommas(value) {
+            // Remove commas and parse as float
+            return parseFloat(String(value).replace(/,/g, '')) || 0;
+        }
+
+        // ========================
+        // Slider Sync Functions
+        // ========================
+        function syncSlider(fieldId) {
+            const slider = document.getElementById(fieldId + '_slider');
+            const input = document.getElementById(fieldId);
+            input.value = slider.value;
+        }
+
+        function syncNumber(fieldId) {
+            const slider = document.getElementById(fieldId + '_slider');
+            const input = document.getElementById(fieldId);
+            const value = parseFloat(input.value);
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            
+            // Clamp value to slider range for visual sync, but allow typing beyond
+            if (!isNaN(value)) {
+                slider.value = Math.min(Math.max(value, min), max);
+            }
+        }
+
         // Tiering and pricing (ARR-based)
         const TIERS = [
             { name: "Small", lower: 0, upper: 25_000_000, price: 12_000 },
@@ -599,13 +1007,14 @@
 
         // Default assumptions
         const ASSUMPTIONS = {
-            cost_of_capital_annual_pct: 0.045,
+            cost_of_capital_annual_pct: 0.10,
             dso_reduction_relative_pct: 0.40,
-            bad_debt_reduction_relative_pct: 0.40,
+            bad_debt_reduction_relative_pct: 0.90,
             productivity_time_saved_pct: 0.50,
             hours_per_fte_per_year: 2000,
             working_days_per_year: 365,
-            percentage_of_time_on_invoices: 0.80
+            percentage_of_time_on_invoices: 0.80,
+            average_fte_salary: 65000
         };
 
         function determineTierAndPrice(annualRevenue) {
@@ -665,20 +1074,24 @@
         }
 
         function calculateROI() {
-            // Get inputs
+            // Get inputs (use parseNumberWithCommas for text fields with comma formatting)
             const inputs = {
                 industry: document.getElementById('industry').value,
-                annual_revenue: parseFloat(document.getElementById('annual_revenue').value) || 0,
+                annual_revenue: parseNumberWithCommas(document.getElementById('annual_revenue').value),
                 ar_headcount: parseInt(document.getElementById('ar_headcount').value) || 0,
                 current_dso_days: parseFloat(document.getElementById('current_dso').value) || 0,
-                monthly_invoices: parseInt(document.getElementById('monthly_invoices').value) || 0,
-                fte_salary_base: parseFloat(document.getElementById('fte_salary').value) || 0,
+                monthly_invoices: parseNumberWithCommas(document.getElementById('monthly_invoices').value),
+                fte_salary_base: ASSUMPTIONS.average_fte_salary,  // Use assumption instead of user input
                 bad_debt_pct: (parseFloat(document.getElementById('bad_debt_pct').value) || 0) / 100
             };
 
-            // Validate inputs
-            if (inputs.annual_revenue <= 0 || inputs.ar_headcount <= 0) {
-                alert('Please fill in all required fields with valid values.');
+            // Validate inputs - all fields required
+            if (inputs.annual_revenue <= 0 || 
+                inputs.ar_headcount <= 0 || 
+                inputs.current_dso_days <= 0 || 
+                inputs.monthly_invoices <= 0 || 
+                inputs.bad_debt_pct < 0) {
+                alert('Please fill in all fields with valid values.');
                 return;
             }
 
@@ -687,12 +1100,12 @@
 
             // Calculate metrics
             const cashFlowImprovement = computeCashFlowImprovement(inputs);
-            const employeeSavings = computeAnnualizedEmployeeSavings(inputs);
+            const manualWorkSavings = computeAnnualizedEmployeeSavings(inputs);
             const productivityHoursSaved = computeProductivityHoursSaved(inputs);
             const badDebtSavings = computeBadDebtSavings(inputs);
 
             // ROI excludes freed cash
-            const totalBenefit = employeeSavings + badDebtSavings;
+            const totalBenefit = manualWorkSavings + badDebtSavings;
             const roiPct = computeRoiPct(totalBenefit, annualPrice);
 
             // Opportunity cost
@@ -741,16 +1154,151 @@
                 benchmarkHTML = `<div class="benchmark-text">No industry benchmark available for "${inputs.industry}". Your current DSO is <span class="highlight">${inputs.current_dso_days} days</span>. With Daylit X, your projected DSO would be <span class="highlight">${Math.round(projectedDSO)} days</span>.</div>`;
             }
 
+            // Generate areas of improvement with detailed content
+            const improvements = [];
+            const dsoAboveBenchmark = benchmarkDSO !== null ? Math.round(inputs.current_dso_days - benchmarkDSO) : 0;
+            
+            // Check DSO vs benchmark
+            if (benchmarkDSO !== null && inputs.current_dso_days > benchmarkDSO) {
+                improvements.push({ 
+                    id: 'collection-time',
+                    icon: '⏱️', 
+                    text: 'Reduce Collection Time',
+                    why: `Your DSO of ${inputs.current_dso_days} days is ${dsoAboveBenchmark} days above the ${inputs.industry} industry average of ${benchmarkDSO} days. This means your cash is tied up longer than competitors, limiting your ability to invest in growth.`,
+                    features: [
+                        'Automated payment reminders sent at optimal times',
+                        'Smart dunning sequences that adapt to customer behavior',
+                        'Real-time payment tracking and status updates',
+                        'Customer payment portal for easy self-service'
+                    ]
+                });
+            }
+            
+            // Check if significant hours can be saved
+            if (productivityHoursSaved > 200) {
+                improvements.push({ 
+                    id: 'automation',
+                    icon: '⚡', 
+                    text: 'Automate Manual Workflows',
+                    why: `Your team could save ${formatNumber(productivityHoursSaved)} hours annually. That's equivalent to ${(productivityHoursSaved / 2000).toFixed(1)} full-time employees worth of effort that could be redirected to strategic work like customer relationships and cash flow analysis.`,
+                    features: [
+                        'AI-powered invoice matching and reconciliation',
+                        'Automated customer communication workflows',
+                        'One-click payment application and posting',
+                        'Exception-based workflow so your team focuses on what matters'
+                    ]
+                });
+            }
+            
+            // Check bad debt rate (if > 0.5%)
+            if (inputs.bad_debt_pct > 0.005) {
+                improvements.push({ 
+                    id: 'write-offs',
+                    icon: '🛡️', 
+                    text: 'Reduce Write-Offs',
+                    why: `At a ${(inputs.bad_debt_pct * 100).toFixed(1)}% bad debt rate, you're writing off approximately ${formatCurrency(badDebtSavings / ASSUMPTIONS.bad_debt_reduction_relative_pct)} annually. With better follow-up and earlier intervention, most of this can be recovered.`,
+                    features: [
+                        'Early warning alerts for at-risk accounts',
+                        'Automated escalation paths before accounts go delinquent',
+                        'Customer credit risk monitoring and scoring',
+                        'Proactive outreach based on payment patterns'
+                    ]
+                });
+            }
+            
+            // Check cash flow improvement potential
+            if (cashFlowImprovement > 100000) {
+                improvements.push({ 
+                    id: 'cash-flow',
+                    icon: '💰', 
+                    text: 'Improve Cash Flow',
+                    why: `By reducing your DSO by 40%, you could unlock ${formatCurrency(cashFlowImprovement)} in working capital. This is cash currently stuck in receivables that could be used for operations, investments, or reducing credit line usage.`,
+                    features: [
+                        'Predictive cash flow forecasting',
+                        'Customer payment behavior analytics',
+                        'Optimized collection prioritization',
+                        'Real-time visibility into incoming payments'
+                    ]
+                });
+            }
+            
+            // Always suggest if they have multiple A/R headcount
+            if (inputs.ar_headcount >= 2) {
+                improvements.push({ 
+                    id: 'streamline',
+                    icon: '📊', 
+                    text: 'Streamline A/R Operations',
+                    why: `With ${inputs.ar_headcount} people managing A/R and ${formatNumber(inputs.monthly_invoices)} invoices monthly, there's significant opportunity to standardize processes, reduce errors, and improve team productivity through better tools and automation.`,
+                    features: [
+                        'Centralized dashboard for team visibility',
+                        'Standardized collection workflows',
+                        'Performance analytics and reporting',
+                        'Workload balancing and assignment automation'
+                    ]
+                });
+            }
+            
+            // Build improvements HTML with expandable cards
+            let improvementsHTML = '';
+            if (improvements.length > 0) {
+                improvementsHTML = `<div class="areas-improvement-title">Key Areas for Improvement</div>`;
+                improvementsHTML += `<div class="improvement-tags">`;
+                improvements.forEach(item => {
+                    improvementsHTML += `<span class="improvement-tag" data-improvement="${item.id}" onclick="toggleImprovement('${item.id}')">
+                        <span class="tag-icon">${item.icon}</span>${item.text}<span class="expand-icon">▼</span>
+                    </span>`;
+                });
+                improvementsHTML += `</div>`;
+                
+                // Add detail cards
+                improvementsHTML += `<div class="improvement-details">`;
+                improvements.forEach(item => {
+                    improvementsHTML += `
+                        <div class="improvement-card" id="improvement-card-${item.id}">
+                            <div class="improvement-card-header">
+                                <span class="improvement-card-icon">${item.icon}</span>
+                                <span class="improvement-card-title">${item.text}</span>
+                            </div>
+                            <div class="improvement-card-why">
+                                <div class="improvement-card-why-label">Why This Matters</div>
+                                <div class="improvement-card-why-text">${item.why}</div>
+                            </div>
+                            <div class="improvement-card-how-label">How Daylit X Helps</div>
+                            <div class="improvement-card-features">
+                                ${item.features.map(f => `<div class="improvement-feature"><span class="improvement-feature-check">✓</span>${f}</div>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+                improvementsHTML += `</div>`;
+            }
+
             // Update UI
-            document.getElementById('tier-badge').textContent = tier;
+            document.getElementById('areas-improvement').innerHTML = improvementsHTML;
             document.getElementById('industry-benchmark').innerHTML = benchmarkHTML;
             document.getElementById('roi-value').textContent = 
                 roiPct === Infinity ? "∞%" : roiPct.toFixed(1) + "%";
+            const dsoImprovement = Math.round(inputs.current_dso_days * ASSUMPTIONS.dso_reduction_relative_pct);
+            document.getElementById('dso-improvement').textContent = dsoImprovement + " days";
+            
+            // Payback period calculation with smart formatting
+            let paybackDisplay = "N/A";
+            if (totalBenefit > 0) {
+                const paybackMonths = (annualPrice / totalBenefit) * 12;
+                if (paybackMonths < 12) {
+                    paybackDisplay = paybackMonths.toFixed(1) + " mo";
+                } else {
+                    const paybackYears = paybackMonths / 12;
+                    paybackDisplay = paybackYears.toFixed(1) + " yr";
+                }
+            }
+            document.getElementById('payback-period').textContent = paybackDisplay;
             document.getElementById('cash-flow').textContent = formatCurrency(cashFlowImprovement);
-            document.getElementById('employee-savings').textContent = formatCurrency(employeeSavings);
+            document.getElementById('manual-work-savings').textContent = formatCurrency(manualWorkSavings);
             document.getElementById('hours-saved').textContent = formatNumber(productivityHoursSaved);
             document.getElementById('bad-debt-savings').textContent = formatCurrency(badDebtSavings);
-            document.getElementById('opportunity-cost').textContent = formatCurrency(opportunityCost);
+            document.getElementById('opportunity-cost-savings').textContent = formatCurrency(opportunityCost);
+            document.getElementById('total-savings').textContent = formatCurrency(totalBenefit);
             document.getElementById('annual-price').textContent = formatCurrency(annualPrice);
 
             // Show results
