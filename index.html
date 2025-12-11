@@ -1,4 +1,3 @@
-<!-- updated version 2 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,62 +116,6 @@
             font-size: 0.75rem;
             color: #888;
             margin-top: 4px;
-        }
-
-        /* Slider styles */
-        .slider-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .slider-group input[type="range"] {
-            flex: 1;
-            -webkit-appearance: none;
-            appearance: none;
-            height: 8px;
-            background: #e5e5e5;
-            border-radius: 4px;
-            outline: none;
-            padding: 0;
-            border: none;
-        }
-
-        .slider-group input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--burgundy-600);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 6px rgba(77, 21, 32, 0.3);
-        }
-
-        .slider-group input[type="range"]::-webkit-slider-thumb:hover {
-            background: var(--burgundy-400);
-            transform: scale(1.1);
-        }
-
-        .slider-group input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: var(--burgundy-600);
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 2px 6px rgba(77, 21, 32, 0.3);
-        }
-
-        .slider-group input[type="number"] {
-            width: 80px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .slider-group input[type="number"].wide {
-            width: 100px;
         }
 
         .calculate-btn {
@@ -357,38 +300,6 @@
             color: #2e7d32;
             font-weight: bold;
             flex-shrink: 0;
-        }
-
-        .industry-benchmark {
-            padding: 16px 20px;
-            background: #f8f8f8;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .industry-benchmark .benchmark-title {
-            font-weight: 600;
-            color: var(--burgundy-600);
-            margin-bottom: 8px;
-        }
-
-        .industry-benchmark .benchmark-text {
-            color: var(--burgundy-400);
-        }
-
-        .industry-benchmark .highlight {
-            font-weight: 600;
-            color: var(--burgundy-600);
-        }
-
-        .industry-benchmark .positive {
-            color: #2e7d32;
-        }
-
-        .industry-benchmark .negative {
-            color: #c62828;
         }
 
         .hero-highlight {
@@ -669,6 +580,317 @@
             letter-spacing: normal;
         }
 
+        /* Gated Section Styles */
+        .gated-section {
+            margin-top: 32px;
+            position: relative;
+        }
+
+        .unlock-form-container {
+            background: linear-gradient(135deg, var(--yellow-100) 0%, var(--yellow-200) 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            text-align: center;
+            border: 2px solid var(--yellow-300);
+        }
+
+        .unlock-form-header {
+            margin-bottom: 16px;
+        }
+
+        .unlock-form-header .lock-icon {
+            font-size: 1.75rem;
+            display: inline;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .unlock-form-header h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--burgundy-600);
+            margin-bottom: 4px;
+            display: inline;
+            vertical-align: middle;
+        }
+
+        .unlock-form-header p {
+            font-size: 0.85rem;
+            color: var(--burgundy-400);
+            margin: 8px 0 0 0;
+        }
+
+        .unlock-form-inline {
+            display: flex;
+            gap: 10px;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .unlock-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: white;
+            color: var(--burgundy-600);
+            transition: all 0.2s ease;
+        }
+
+        .unlock-form input:focus {
+            outline: none;
+            border-color: var(--burgundy-400);
+            box-shadow: 0 0 0 3px rgba(77, 21, 32, 0.1);
+        }
+
+        .unlock-form input::placeholder {
+            color: #999;
+        }
+
+        .unlock-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--burgundy-600);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .unlock-btn:hover {
+            background: var(--burgundy-400);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(77, 21, 32, 0.3);
+        }
+
+        .unlock-icon {
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .unlock-btn:hover .unlock-icon {
+            transform: translateX(4px);
+        }
+
+        .blurred-content {
+            filter: blur(8px);
+            user-select: none;
+            pointer-events: none;
+            opacity: 0.6;
+            transition: all 0.4s ease;
+        }
+
+        .blurred-content.unlocked {
+            filter: none;
+            user-select: auto;
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        .unlock-form-container.hidden {
+            display: none;
+        }
+
+        .unlock-success {
+            display: none;
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .unlock-success.visible {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .unlock-success-text {
+            color: #2e7d32;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* A/R Aging Chart Styles */
+        .aging-chart-container {
+            background: white;
+            border: 2px solid var(--yellow-200);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .aging-chart-title {
+            font-weight: 600;
+            color: var(--burgundy-600);
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .aging-chart-subtitle {
+            font-size: 0.85rem;
+            color: var(--burgundy-400);
+            margin-bottom: 20px;
+        }
+
+        .aging-summary {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .aging-summary-item {
+            background: var(--yellow-100);
+            padding: 12px 16px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .aging-summary-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--burgundy-600);
+        }
+
+        .aging-summary-label {
+            font-size: 0.75rem;
+            color: var(--burgundy-400);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .aging-summary-label-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .aging-summary-label-wrapper .info-icon {
+            width: 14px;
+            height: 14px;
+            font-size: 9px;
+        }
+
+        .aging-summary-label-wrapper .tooltip {
+            width: 240px;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .aging-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .aging-bar-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 80px;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .aging-bar-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--burgundy-600);
+        }
+
+        .aging-bar-track {
+            height: 28px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .aging-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.6s ease;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
+
+        .aging-bar-fill.bucket-current {
+            background: linear-gradient(90deg, #4caf50, #66bb6a);
+        }
+
+        .aging-bar-fill.bucket-30 {
+            background: linear-gradient(90deg, #8bc34a, #9ccc65);
+        }
+
+        .aging-bar-fill.bucket-60 {
+            background: linear-gradient(90deg, #ffc107, #ffca28);
+        }
+
+        .aging-bar-fill.bucket-90 {
+            background: linear-gradient(90deg, #ff9800, #ffb74d);
+        }
+
+        .aging-bar-fill.bucket-90plus {
+            background: linear-gradient(90deg, #f44336, #ef5350);
+        }
+
+        .aging-bar-fill.bucket-baddebt {
+            background: linear-gradient(90deg, #37474f, #546e7a);
+        }
+
+        .aging-bar-pct {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .aging-bar-amount {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--burgundy-400);
+            text-align: right;
+        }
+
+        .aging-warning {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 12px 16px;
+            background: #fff3e0;
+            border-radius: 8px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .aging-warning-icon {
+            font-size: 1.2rem;
+        }
+
+        .aging-warning-text {
+            font-size: 0.85rem;
+            color: #e65100;
+        }
+
+        .aging-warning-text strong {
+            font-weight: 600;
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 1.75rem;
@@ -684,6 +906,30 @@
             }
             .secondary-highlights {
                 grid-template-columns: 1fr;
+            }
+            .aging-summary {
+                flex-direction: column;
+            }
+            .aging-bar-row {
+                grid-template-columns: 70px 1fr 60px;
+                gap: 8px;
+            }
+            .aging-bar-label {
+                font-size: 0.75rem;
+            }
+            .aging-bar-amount {
+                font-size: 0.75rem;
+            }
+            .unlock-form-inline {
+                flex-direction: column;
+            }
+            .unlock-form-header .lock-icon {
+                display: block;
+                margin-bottom: 8px;
+            }
+            .unlock-form-header h3 {
+                display: block;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -712,10 +958,10 @@
                 <div class="form-group">
                     <label for="industry">Industry</label>
                     <select id="industry">
-                        <option value="Retail Distributors">Retail Distributors</option>
-                        <option value="Chemical (Specialty)">Chemical (Specialty)</option>
-                        <option value="Hospitals/Healthcare Facilities">Hospitals/Healthcare Facilities</option>
-                        <option value="Business & Consumer Services">Business & Consumer Services</option>
+                        <option value="Wholesale & Distribution">Wholesale & Distribution</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Construction">Construction</option>
+                        <option value="Staffing & Recruiting">Staffing & Recruiting</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>
@@ -728,10 +974,7 @@
 
                 <div class="form-group">
                     <label for="ar_headcount">A/R Team Headcount</label>
-                    <div class="slider-group">
-                        <input type="range" id="ar_headcount_slider" min="1" max="20" value="5" oninput="syncSlider('ar_headcount')">
-                        <input type="number" id="ar_headcount" placeholder="e.g., 5" min="1" max="50" value="5" oninput="syncNumber('ar_headcount')">
-                    </div>
+                    <input type="number" id="ar_headcount" placeholder="e.g., 5" min="1" value="5">
                     <span class="input-hint">Number of FTEs managing A/R</span>
                 </div>
 
@@ -743,10 +986,7 @@
                             <span class="tooltip">Days Sales Outstanding: The average number of days it takes to collect payment after a sale is made.</span>
                         </span>
                     </label>
-                    <div class="slider-group">
-                        <input type="range" id="current_dso_slider" min="15" max="120" value="45" oninput="syncSlider('current_dso')">
-                        <input type="number" id="current_dso" placeholder="e.g., 45" min="1" max="180" value="45" oninput="syncNumber('current_dso')">
-                    </div>
+                    <input type="number" id="current_dso" placeholder="e.g., 45" min="1" value="45">
                     <span class="input-hint">Days Sales Outstanding</span>
                 </div>
 
@@ -761,10 +1001,10 @@
                         <span class="tooltip-wrapper">
                             Bad Debt Rate (%)
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Percentage of accounts receivable that becomes uncollectible and is written off annually.</span>
+                            <span class="tooltip">Percentage of accounts receivable written off annually as uncollectible.</span>
                         </span>
                     </label>
-                    <input type="number" id="bad_debt_pct" placeholder="e.g., 1" min="0" max="100" step="0.1" value="1">
+                    <input type="number" id="bad_debt_pct" placeholder="e.g., 1" min="0" max="20" step="0.1" value="1" oninput="if(this.value > 20) this.value = 20">
                     <span class="input-hint">Percentage of A/R written off</span>
                 </div>
             </div>
@@ -776,16 +1016,12 @@
             <div class="card">
                 <h2 class="card-title">Your Daylit X ROI</h2>
                 
-                <div class="areas-improvement" id="areas-improvement"></div>
-
-                <div class="industry-benchmark" id="industry-benchmark"></div>
-
                 <div class="hero-highlight">
                     <div class="roi-label">
                         <span class="roi-label-wrapper">
                             Return on Investment
                             <span class="info-icon">i</span>
-                            <span class="tooltip">ROI = ((Manual Work Savings + Bad Debt Savings) − Daylit X Cost) ÷ Daylit X Cost × 100. Cash flow improvement is reported separately as it represents freed capital, not recurring savings.</span>
+                            <span class="tooltip">ROI = ((Team Capacity Unlocked + Leakage Savings) − Daylit X Cost) ÷ Daylit X Cost × 100. Working capital freed is reported separately as it represents one-time balance sheet improvement.</span>
                         </span>
                     </div>
                     <div class="roi-value" id="roi-value">0%</div>
@@ -797,7 +1033,7 @@
                             <span class="roi-label-wrapper">
                                 DSO Improvement
                                 <span class="info-icon">i</span>
-                                <span class="tooltip">Days Sales Outstanding reduction with Daylit X. Formula: Current DSO × 40% improvement. Lower DSO means faster cash collection.</span>
+                                <span class="tooltip">Days Sales Outstanding reduction with Daylit X. Formula: Current DSO × Dynamic Reduction (30-50% based on team workload). Overloaded teams see higher improvement. Lower DSO means faster cash collection.</span>
                             </span>
                         </div>
                         <div class="roi-value" id="dso-improvement">0 days</div>
@@ -818,17 +1054,17 @@
                     <div class="metric-card">
                         <div class="metric-value" id="cash-flow">$0</div>
                         <div class="metric-label-wrapper">
-                            <span class="metric-label">Cash Flow Improvement</span>
+                            <span class="metric-label">Working Capital Freed</span>
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Working capital freed by reducing DSO. Formula: Daily Revenue × Days Reduced. This is a one-time balance sheet improvement, not recurring savings.</span>
+                            <span class="tooltip">Cash unlocked by collecting faster. Formula: Daily Revenue × Days Reduced. This capital can be reinvested in growth or reduce credit line usage.</span>
                         </div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-value" id="manual-work-savings">$0</div>
                         <div class="metric-label-wrapper">
-                            <span class="metric-label">Manual Work Savings</span>
+                            <span class="metric-label">Team Capacity Unlocked</span>
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Annual cost savings from A/R automation. Formula: Headcount × Hours on Invoices × Time Saved  × Hourly Wage. Represents time that can be reallocated to higher-value work.</span>
+                            <span class="tooltip">Value of team capacity freed by A/R automation. Formula: Headcount × Hours on Invoices × Time Saved × Hourly Rate. This capacity can be redirected to customer relationships and strategic work.</span>
                         </div>
                     </div>
                     <div class="metric-card">
@@ -840,17 +1076,17 @@
                         </div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="bad-debt-savings">$0</div>
+                        <div class="metric-value" id="leakage-savings">$0</div>
                         <div class="metric-label-wrapper">
-                            <span class="metric-label">Bad Debt Savings</span>
+                            <span class="metric-label">Leakage Savings</span>
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Reduction in uncollectible receivables. Formula: Estimated A/R Balance × Bad Debt Rate × 90% improvement with Daylit X. Better follow-up = fewer write-offs.</span>
+                            <span class="tooltip">Reduction in revenue leakage (write-offs, discounts, settlements). Formula: A/R Balance × Leakage Rate × 90% improvement. Better follow-up = fewer write-offs and less need for discounts.</span>
                         </div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-value" id="opportunity-cost-savings">$0</div>
-                        <div class="metric-label-wrapper"> 
-                            <span class="metric-label">Opportunity Cost Savings</span>
+                        <div class="metric-label-wrapper">
+                            <span class="metric-label">Opportunity Gained</span>
                             <span class="info-icon">i</span>
                             <span class="tooltip">Potential returns if savings were invested. Formula: Total Annual Savings × 10% (S&P 500 historical average). Represents the growth you miss by not capturing these savings sooner.</span>
                         </div>
@@ -860,7 +1096,7 @@
                         <div class="metric-label-wrapper">
                             <span class="metric-label">Total Annual Savings</span>
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Combined recurring annual savings. Formula: Manual Work Savings + Bad Debt Savings. This is the total used for ROI calculation.</span>
+                            <span class="tooltip">Combined recurring annual value. Formula: Team Capacity Unlocked + Leakage Savings. This is the total used for ROI calculation.</span>
                         </div>
                     </div>
                 </div>
@@ -868,6 +1104,61 @@
                 <div class="price-info">
                     <span class="price-label">Daylit X Annual Investment</span>
                     <span class="price-value" id="annual-price">$0</span>
+                </div>
+
+                <!-- Gated Key Areas Section -->
+                <div class="gated-section" id="gated-section">
+                    <div class="unlock-form-container" id="unlock-form-container">
+                        <div class="unlock-form-header">
+                            <span class="lock-icon">📧</span>
+                            <h3>Still exploring your options?</h3>
+                            <p>No pressure. See your personalized insights now, decide on a demo later.</p>
+                        </div>
+                        <form class="unlock-form" id="unlock-form" onsubmit="handleUnlock(event)">
+                            <div class="unlock-form-inline">
+                                <input type="email" id="lead-email" placeholder="Enter your work email" required>
+                                <button type="submit" class="unlock-btn">
+                                    <span>Show Me</span>
+                                    <span class="unlock-icon">→</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="blurred-content" id="blurred-content">
+                        <!-- A/R Aging Chart -->
+                        <div class="aging-chart-container" id="aging-chart-container">
+                            <div class="aging-chart-title">
+                                <span>📊</span> Estimated A/R Aging Analysis
+                            </div>
+                            <div class="aging-chart-subtitle">Based on your DSO and bad debt rate</div>
+                            
+                            <div class="aging-summary">
+                                <div class="aging-summary-item">
+                                    <div class="aging-summary-value" id="aging-total-ar">$0</div>
+                                    <div class="aging-summary-label-wrapper">
+                                        <span class="aging-summary-label">Total A/R Balance</span>
+                                        <span class="info-icon">i</span>
+                                        <span class="tooltip">Estimated A/R Balance = Annual Revenue × (Current DSO ÷ 365). This represents the average amount tied up in receivables at any given time.</span>
+                                    </div>
+                                </div>
+                                <div class="aging-summary-item">
+                                    <div class="aging-summary-value" id="aging-at-risk">$0</div>
+                                    <div class="aging-summary-label">At Risk (90+ & Bad Debt)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="aging-bars" id="aging-bars">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                            
+                            <div class="aging-warning" id="aging-warning" style="display: none;">
+                                <span class="aging-warning-icon">⚠️</span>
+                                <span class="aging-warning-text" id="aging-warning-text"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="areas-improvement" id="areas-improvement"></div>
+                    </div>
                 </div>
 
                 <p class="disclaimer">
@@ -919,6 +1210,96 @@
         }
 
         // ========================
+        // A/R Aging Estimation
+        // ========================
+        function estimateAgingDistribution(currentDso, benchmarkDso, badDebtPct) {
+            // Bad debt is a fixed % from user input
+            // Remaining % is distributed based on DSO health
+            const badDebtShare = Math.min(badDebtPct, 0.20);  // Cap at 20% for sanity
+            const remainingShare = 1 - badDebtShare;
+            
+            // Health score: 1 = healthy (at/below benchmark), approaches 0 as DSO gets worse
+            const healthScore = Math.min(1, benchmarkDso / currentDso);
+            
+            // Base distributions for the non-bad-debt portion
+            const healthy = { "0-30": 0.72, "31-60": 0.18, "61-90": 0.06, "90+": 0.04 };
+            const unhealthy = { "0-30": 0.42, "31-60": 0.23, "61-90": 0.18, "90+": 0.17 };
+            
+            // Interpolate based on health score
+            const distribution = {};
+            for (const bucket of Object.keys(healthy)) {
+                const basePct = healthScore * healthy[bucket] + (1 - healthScore) * unhealthy[bucket];
+                distribution[bucket] = basePct * remainingShare;  // Scale to remaining share
+            }
+            
+            // Add bad debt as its own bucket
+            distribution["bad-debt"] = badDebtShare;
+            
+            return distribution;
+        }
+
+        function renderAgingChart(inputs, benchmarkDso) {
+            // Calculate total A/R balance
+            const arBalance = inputs.annual_revenue * (inputs.current_dso_days / ASSUMPTIONS.working_days_per_year);
+            
+            // Get aging distribution (all adds to 100%)
+            const distribution = estimateAgingDistribution(
+                inputs.current_dso_days, 
+                benchmarkDso, 
+                inputs.bad_debt_pct
+            );
+            
+            // Calculate amounts for each bucket (including bad debt)
+            const buckets = [
+                { label: "0-30 days", key: "0-30", class: "bucket-current" },
+                { label: "31-60 days", key: "31-60", class: "bucket-60" },
+                { label: "61-90 days", key: "61-90", class: "bucket-90" },
+                { label: "90+ days", key: "90+", class: "bucket-90plus" },
+                { label: "Bad Debt", key: "bad-debt", class: "bucket-baddebt" }
+            ];
+            
+            // Update summary
+            const atRiskAmount = arBalance * distribution["90+"];
+            const badDebtAmount = arBalance * distribution["bad-debt"];
+            document.getElementById('aging-total-ar').textContent = formatCurrency(arBalance);
+            document.getElementById('aging-at-risk').textContent = formatCurrency(atRiskAmount + badDebtAmount);
+            
+            // Render bars
+            let barsHTML = '';
+            for (const bucket of buckets) {
+                const pct = distribution[bucket.key];
+                const amount = arBalance * pct;
+                const widthPct = Math.max(pct > 0 ? 5 : 0, pct * 100); // Min 5% width for visibility if > 0
+                
+                // Skip bad debt row if 0%
+                if (bucket.key === "bad-debt" && pct === 0) continue;
+                
+                barsHTML += `
+                    <div class="aging-bar-row">
+                        <div class="aging-bar-label">${bucket.label}</div>
+                        <div class="aging-bar-track">
+                            <div class="aging-bar-fill ${bucket.class}" style="width: ${widthPct}%">
+                                <span class="aging-bar-pct">${(pct * 100).toFixed(0)}%</span>
+                            </div>
+                        </div>
+                        <div class="aging-bar-amount">${formatCurrency(amount)}</div>
+                    </div>
+                `;
+            }
+            document.getElementById('aging-bars').innerHTML = barsHTML;
+            
+            // Show warning if 90+ is significant
+            const warningEl = document.getElementById('aging-warning');
+            const warningTextEl = document.getElementById('aging-warning-text');
+            if (distribution["90+"] > 0.08) {
+                warningEl.style.display = 'flex';
+                warningTextEl.innerHTML = `<strong>${formatCurrency(atRiskAmount)}</strong> (${(distribution["90+"] * 100).toFixed(0)}%) of your receivables are estimated to be 90+ days old. Daylit X can help recover these through automated follow-ups.`;
+            } else {
+                warningEl.style.display = 'none';
+            }
+        }
+
+        // ========================
         // Number Formatting Functions
         // ========================
         function formatNumberInput(input) {
@@ -949,28 +1330,6 @@
             return parseFloat(String(value).replace(/,/g, '')) || 0;
         }
 
-        // ========================
-        // Slider Sync Functions
-        // ========================
-        function syncSlider(fieldId) {
-            const slider = document.getElementById(fieldId + '_slider');
-            const input = document.getElementById(fieldId);
-            input.value = slider.value;
-        }
-
-        function syncNumber(fieldId) {
-            const slider = document.getElementById(fieldId + '_slider');
-            const input = document.getElementById(fieldId);
-            const value = parseFloat(input.value);
-            const min = parseFloat(slider.min);
-            const max = parseFloat(slider.max);
-            
-            // Clamp value to slider range for visual sync, but allow typing beyond
-            if (!isNaN(value)) {
-                slider.value = Math.min(Math.max(value, min), max);
-            }
-        }
-
         // Tiering and pricing (ARR-based)
         const TIERS = [
             { name: "Small", lower: 0, upper: 25_000_000, price: 12_000 },
@@ -981,41 +1340,51 @@
         // Industry benchmarks (source: Damodaran, NYU Stern, Jan 2025)
         // DSO = Acc Rec/Sales × 365
         const INDUSTRY_DATA = {
-            "Retail Distributors": {
+            "Wholesale & Distribution": {
                 acc_rec_to_sales_pct: 0.1216,
                 benchmark_dso_days: Math.round(0.1216 * 365)  // 44 days
             },
-            "Chemical (Specialty)": {
-                acc_rec_to_sales_pct: 0.1764,
+            "Manufacturing": {
+                acc_rec_to_sales_pct: 0.1866,
                 benchmark_dso_days: Math.round(0.1764 * 365)  // 64 days
             },
-            "Hospitals/Healthcare Facilities": {
-                acc_rec_to_sales_pct: 0.1447,
+            "Construction": {
+                acc_rec_to_sales_pct: 0.2705,
                 benchmark_dso_days: Math.round(0.1447 * 365)  // 53 days
             },
-            "Business & Consumer Services": {
+            "Staffing & Recruiting": {
                 acc_rec_to_sales_pct: 0.1829,
                 benchmark_dso_days: Math.round(0.1829 * 365)  // 67 days
             }
         };
 
+        const DEFAULT_BENCHMARK_DSO = 45;  // Market average for "Other" industry
+
         function getIndustryBenchmarkDSO(industry) {
             if (INDUSTRY_DATA[industry]) {
                 return INDUSTRY_DATA[industry].benchmark_dso_days;
             }
-            return null;
+            return DEFAULT_BENCHMARK_DSO;  // Return market average for "Other"
+        }
+
+        function isOtherIndustry(industry) {
+            return !INDUSTRY_DATA[industry];
         }
 
         // Default assumptions
         const ASSUMPTIONS = {
             cost_of_capital_annual_pct: 0.10,
-            dso_reduction_relative_pct: 0.40,
-            bad_debt_reduction_relative_pct: 0.90,
+            revenue_leakage_reduction_pct: 0.90,       // % reduction in leakage with Daylit X
+            revenue_leakage_multiplier: 3.0,          // Multiplier: users underestimate total leakage
             productivity_time_saved_pct: 0.50,
             hours_per_fte_per_year: 2000,
             working_days_per_year: 365,
-            percentage_of_time_on_invoices: 0.80,
-            average_fte_salary: 65000
+            percentage_of_time_on_invoices: 0.50,
+            average_fte_salary: 65000,
+            // Dynamic DSO reduction based on coverage ratio
+            target_invoice_per_minute: 12.0,
+            dso_reduction_floor: 0.30,    // Min reduction (adequate staffing)
+            dso_reduction_ceiling: 0.50   // Max reduction (overloaded team)
         };
 
         function determineTierAndPrice(annualRevenue) {
@@ -1027,8 +1396,28 @@
             return { name: "Enterprise", price: TIERS[2].price };
         }
 
-        function computeCashFlowImprovement(inputs) {
-            const daysReduced = inputs.current_dso_days * ASSUMPTIONS.dso_reduction_relative_pct;
+        function computeCoverageRatio(inputs) {
+            // Coverage ratio: minutes per invoice / target minutes per invoice
+            const annualTimeOnInvoicesMinutes = ASSUMPTIONS.hours_per_fte_per_year * ASSUMPTIONS.percentage_of_time_on_invoices * 60;
+            const invoicesPerYear = 12 * inputs.monthly_invoices;
+            const minutesPerInvoice = (annualTimeOnInvoicesMinutes * inputs.ar_headcount) / invoicesPerYear;
+            return minutesPerInvoice / ASSUMPTIONS.target_invoice_per_minute;
+        }
+
+        function dsoReductionFromCoverageRatio(coverageRatio) {
+            // Low coverage (overloaded) = high reduction (more room for Daylit X to help)
+            // High coverage (adequate staffing) = lower reduction (less room for improvement)
+            if (coverageRatio >= 1.0) {
+                return ASSUMPTIONS.dso_reduction_floor;  // Full coverage = min reduction
+            } else {
+                // Linear interpolation: 0% coverage → ceiling, 100% coverage → floor
+                return ASSUMPTIONS.dso_reduction_floor + 
+                    (ASSUMPTIONS.dso_reduction_ceiling - ASSUMPTIONS.dso_reduction_floor) * (1.0 - coverageRatio);
+            }
+        }
+
+        function computeCashFlowImprovement(inputs, dsoReductionPct) {
+            const daysReduced = inputs.current_dso_days * dsoReductionPct;
             const averageDailyRevenue = inputs.annual_revenue / ASSUMPTIONS.working_days_per_year;
             const freedCashBalance = averageDailyRevenue * daysReduced;
             return Math.max(0, freedCashBalance);
@@ -1049,11 +1438,13 @@
             return Math.max(0, totalHours);
         }
 
-        function computeBadDebtSavings(inputs) {
+        function computeLeakageSavings(inputs) {
             const estimatedArBalance = inputs.annual_revenue * 
                 (inputs.current_dso_days / ASSUMPTIONS.working_days_per_year);
-            const baselineBadDebt = estimatedArBalance * inputs.bad_debt_pct;
-            const savings = baselineBadDebt * ASSUMPTIONS.bad_debt_reduction_relative_pct;
+            // Apply multiplier: bad debt is just part of total leakage (discounts, settlements, etc.)
+            const effectiveLeakageRate = inputs.bad_debt_pct * ASSUMPTIONS.revenue_leakage_multiplier;
+            const baselineLeakage = estimatedArBalance * effectiveLeakageRate;
+            const savings = baselineLeakage * ASSUMPTIONS.revenue_leakage_reduction_pct;
             return Math.max(0, savings);
         }
 
@@ -1099,14 +1490,18 @@
             // Calculate tier and price
             const { name: tier, price: annualPrice } = determineTierAndPrice(inputs.annual_revenue);
 
+            // Calculate coverage ratio and dynamic DSO reduction
+            const coverageRatio = computeCoverageRatio(inputs);
+            const dsoReductionPct = dsoReductionFromCoverageRatio(coverageRatio);
+
             // Calculate metrics
-            const cashFlowImprovement = computeCashFlowImprovement(inputs);
+            const cashFlowImprovement = computeCashFlowImprovement(inputs, dsoReductionPct);
             const manualWorkSavings = computeAnnualizedEmployeeSavings(inputs);
             const productivityHoursSaved = computeProductivityHoursSaved(inputs);
-            const badDebtSavings = computeBadDebtSavings(inputs);
+            const leakageSavings = computeLeakageSavings(inputs);
 
             // ROI excludes freed cash
-            const totalBenefit = manualWorkSavings + badDebtSavings;
+            const totalBenefit = manualWorkSavings + leakageSavings;
             const roiPct = computeRoiPct(totalBenefit, annualPrice);
 
             // Opportunity cost
@@ -1114,58 +1509,51 @@
 
             // Generate industry benchmark comparison
             const benchmarkDSO = getIndustryBenchmarkDSO(inputs.industry);
-            const projectedDSO = inputs.current_dso_days * (1 - ASSUMPTIONS.dso_reduction_relative_pct);
-            let benchmarkHTML = '';
-
-            if (benchmarkDSO !== null) {
-                const currentDiff = inputs.current_dso_days - benchmarkDSO;
-                const projectedDiff = projectedDSO - benchmarkDSO;
-
-                benchmarkHTML = `<div class="benchmark-title">
-                    <span class="tooltip-wrapper">
-                        Industry DSO Benchmark: ${inputs.industry}
-                        <span class="info-icon">i</span>
-                        <span class="tooltip">DSO benchmark calculated as Accounts Receivable / Sales × 365 days.<span class="tooltip-source">Source: Damodaran, NYU Stern School of Business (January 2025)</span></span>
-                    </span>
-                </div>`;
-                benchmarkHTML += `<div class="benchmark-text">`;
-
-                // Current DSO comparison
-                if (currentDiff > 0) {
-                    benchmarkHTML += `Your current DSO (<span class="highlight">${inputs.current_dso_days} days</span>) is <span class="highlight negative">${Math.round(currentDiff)} days above</span> the industry benchmark of ${benchmarkDSO} days.<br>`;
-                } else if (currentDiff < 0) {
-                    benchmarkHTML += `Your current DSO (<span class="highlight">${inputs.current_dso_days} days</span>) is <span class="highlight positive">${Math.round(Math.abs(currentDiff))} days below</span> the industry benchmark of ${benchmarkDSO} days.<br>`;
-                } else {
-                    benchmarkHTML += `Your current DSO (<span class="highlight">${inputs.current_dso_days} days</span>) matches the industry benchmark of ${benchmarkDSO} days.<br>`;
-                }
-
-                // Projected DSO after Daylit X
-                benchmarkHTML += `<br>With Daylit X, your projected DSO would be <span class="highlight">${Math.round(projectedDSO)} days</span>. `;
-
-                if (projectedDiff < 0) {
-                    benchmarkHTML += `This puts you <span class="highlight positive">${Math.round(Math.abs(projectedDiff))} days ahead</span> of the industry average.`;
-                } else if (projectedDiff > 0) {
-                    benchmarkHTML += `This brings you within <span class="highlight">${Math.round(projectedDiff)} days</span> of the industry average.`;
-                } else {
-                    benchmarkHTML += `This brings you exactly to the industry average.`;
-                }
-
-                benchmarkHTML += `</div>`;
-            } else {
-                benchmarkHTML = `<div class="benchmark-text">No industry benchmark available for "${inputs.industry}". Your current DSO is <span class="highlight">${inputs.current_dso_days} days</span>. With Daylit X, your projected DSO would be <span class="highlight">${Math.round(projectedDSO)} days</span>.</div>`;
-            }
+            const projectedDSO = inputs.current_dso_days * (1 - dsoReductionPct);
+            const isOther = isOtherIndustry(inputs.industry);
+            const benchmarkLabel = isOther ? "market average" : `${inputs.industry} industry average`;
+            const sourceNote = isOther 
+                ? 'Market average based on cross-industry data'
+                : 'Source: Damodaran, NYU Stern School of Business (January 2025)';
 
             // Generate areas of improvement with detailed content
             const improvements = [];
-            const dsoAboveBenchmark = benchmarkDSO !== null ? Math.round(inputs.current_dso_days - benchmarkDSO) : 0;
+            const dsoAboveBenchmark = Math.round(inputs.current_dso_days - benchmarkDSO);
+            const projectedDiff = Math.round(projectedDSO - benchmarkDSO);
             
-            // Check DSO vs benchmark
-            if (benchmarkDSO !== null && inputs.current_dso_days > benchmarkDSO) {
+            // Industry/market benchmark comparison - always show
+            let benchmarkStatus = '';
+            let benchmarkWhy = '';
+            let currentDsoColor = inputs.current_dso_days > benchmarkDSO ? '#c62828' : '#2e7d32';  // Red if behind, green if ahead
+            
+            if (inputs.current_dso_days > benchmarkDSO) {
+                benchmarkStatus = isOther ? 'Beat Market Average' : 'Beat Industry Average';
+                benchmarkWhy = `Your DSO of <span style="color: ${currentDsoColor}; font-weight: 600;">${inputs.current_dso_days} days</span> is <span style="color: #c62828; font-weight: 600;">${dsoAboveBenchmark} days above</span> the ${benchmarkLabel} of ${benchmarkDSO} days. With Daylit X, your projected DSO of <span style="color: #2e7d32; font-weight: 600;">${Math.round(projectedDSO)} days</span> would put you ${Math.abs(projectedDiff)} days ${projectedDiff < 0 ? 'ahead of' : 'within'} the benchmark.`;
+                } else {
+                benchmarkStatus = 'Extend Your Lead';
+                benchmarkWhy = `You're already <span style="color: #2e7d32; font-weight: 600;">${Math.abs(dsoAboveBenchmark)} days ahead</span> of the ${benchmarkLabel} of ${benchmarkDSO} days. With Daylit X, you could extend that lead to <span style="color: #2e7d32; font-weight: 600;">${Math.abs(projectedDiff)} days ahead</span>, setting a new competitive advantage.`;
+            }
+            
+            improvements.push({ 
+                id: 'benchmark',
+                icon: '🏆', 
+                text: benchmarkStatus,
+                why: benchmarkWhy,
+                features: [
+                    `${isOther ? 'Market' : 'Industry'} benchmark: <span style="font-weight: 600;">${benchmarkDSO} days</span> DSO`,
+                    `Your current DSO: <span style="color: ${currentDsoColor}; font-weight: 600;">${inputs.current_dso_days} days</span>`,
+                    `Projected with Daylit X: <span style="color: #2e7d32; font-weight: 600;">${Math.round(projectedDSO)} days</span>`,
+                    sourceNote
+                ]
+            });
+            
+            // Check DSO vs benchmark - collection time improvement
+            if (inputs.current_dso_days > benchmarkDSO) {
                 improvements.push({ 
                     id: 'collection-time',
                     icon: '⏱️', 
                     text: 'Reduce Collection Time',
-                    why: `Your DSO of ${inputs.current_dso_days} days is ${dsoAboveBenchmark} days above the ${inputs.industry} industry average of ${benchmarkDSO} days. This means your cash is tied up longer than competitors, limiting your ability to invest in growth.`,
+                    why: `Your DSO of ${inputs.current_dso_days} days means your cash is tied up longer than competitors, limiting your ability to invest in growth. Faster collections = more working capital.`,
                     features: [
                         'Automated payment reminders sent at optimal times',
                         'Smart dunning sequences that adapt to customer behavior',
@@ -1194,14 +1582,14 @@
             // Check bad debt rate (if > 0.5%)
             if (inputs.bad_debt_pct > 0.005) {
                 improvements.push({ 
-                    id: 'write-offs',
+                    id: 'leakage',
                     icon: '🛡️', 
-                    text: 'Reduce Write-Offs',
-                    why: `At a ${(inputs.bad_debt_pct * 100).toFixed(1)}% bad debt rate, you're writing off approximately ${formatCurrency(badDebtSavings / ASSUMPTIONS.bad_debt_reduction_relative_pct)} annually. With better follow-up and earlier intervention, most of this can be recovered.`,
+                    text: 'Reduce Revenue Leakage',
+                    why: `At a ${(inputs.bad_debt_pct * 100).toFixed(1)}% bad debt rate, you're losing approximately ${formatCurrency(leakageSavings / ASSUMPTIONS.revenue_leakage_reduction_pct)} annually to write-offs, discounts, and settlements. Better follow-up means fewer concessions.`,
                     features: [
                         'Early warning alerts for at-risk accounts',
                         'Automated escalation paths before accounts go delinquent',
-                        'Customer credit risk monitoring and scoring',
+                        'Reduced need for discounts through timely follow-up',
                         'Proactive outreach based on payment patterns'
                     ]
                 });
@@ -1276,10 +1664,13 @@
 
             // Update UI
             document.getElementById('areas-improvement').innerHTML = improvementsHTML;
-            document.getElementById('industry-benchmark').innerHTML = benchmarkHTML;
+            
+            // Render A/R Aging Chart
+            renderAgingChart(inputs, benchmarkDSO);
+            
             document.getElementById('roi-value').textContent = 
                 roiPct === Infinity ? "∞%" : roiPct.toFixed(1) + "%";
-            const dsoImprovement = Math.round(inputs.current_dso_days * ASSUMPTIONS.dso_reduction_relative_pct);
+            const dsoImprovement = Math.round(inputs.current_dso_days * dsoReductionPct);
             document.getElementById('dso-improvement').textContent = dsoImprovement + " days";
             
             // Payback period calculation with smart formatting
@@ -1297,7 +1688,7 @@
             document.getElementById('cash-flow').textContent = formatCurrency(cashFlowImprovement);
             document.getElementById('manual-work-savings').textContent = formatCurrency(manualWorkSavings);
             document.getElementById('hours-saved').textContent = formatNumber(productivityHoursSaved);
-            document.getElementById('bad-debt-savings').textContent = formatCurrency(badDebtSavings);
+            document.getElementById('leakage-savings').textContent = formatCurrency(leakageSavings);
             document.getElementById('opportunity-cost-savings').textContent = formatCurrency(opportunityCost);
             document.getElementById('total-savings').textContent = formatCurrency(totalBenefit);
             document.getElementById('annual-price').textContent = formatCurrency(annualPrice);
@@ -1305,13 +1696,73 @@
             // Show results
             document.getElementById('results').classList.add('visible');
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            
+            // Reset blur gate state (keep unlocked if already unlocked)
+            const blurredContent = document.getElementById('blurred-content');
+            if (!blurredContent.classList.contains('unlocked')) {
+                document.getElementById('unlock-form-container').classList.remove('hidden');
+            }
         }
 
         // Allow Enter key to trigger calculation
         document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
+            if (e.key === 'Enter' && !e.target.closest('#unlock-form')) {
                 calculateROI();
             }
+        });
+
+        // ========================
+        // Unlock Form Handler
+        // ========================
+        function handleUnlock(event) {
+            event.preventDefault();
+            
+            // Get form values (email only)
+            const leadData = {
+                email: document.getElementById('lead-email').value,
+                calculatorData: {
+                    industry: document.getElementById('industry').value,
+                    annualRevenue: document.getElementById('annual_revenue').value,
+                    arHeadcount: document.getElementById('ar_headcount').value,
+                    currentDso: document.getElementById('current_dso').value,
+                    roi: document.getElementById('roi-value').textContent,
+                    totalSavings: document.getElementById('total-savings').textContent
+                }
+            };
+            
+            // Log the lead data (replace with HubSpot integration)
+            console.log('Lead captured:', leadData);
+            
+            // TODO: Send to HubSpot
+            // submitToHubSpot(leadData);
+            
+            // Unlock the content
+            unlockContent();
+        }
+
+        function unlockContent() {
+            document.getElementById('unlock-form-container').classList.add('hidden');
+            document.getElementById('blurred-content').classList.add('unlocked');
+            
+            const successDiv = document.createElement('div');
+            successDiv.className = 'unlock-success visible';
+            successDiv.innerHTML = '<span class="unlock-success-text">✓ Your personalized analysis is now unlocked!</span>';
+            document.getElementById('gated-section').insertBefore(successDiv, document.getElementById('blurred-content'));
+            
+            document.getElementById('areas-improvement').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ========================
+        // Hide Results on Input Change
+        // ========================
+        // When any input changes, hide results to force recalculation
+        document.querySelectorAll('.form-grid input, .form-grid select').forEach(input => {
+            input.addEventListener('input', function() {
+                document.getElementById('results').classList.remove('visible');
+            });
+            input.addEventListener('change', function() {
+                document.getElementById('results').classList.remove('visible');
+            });
         });
     </script>
 </body>
