@@ -9,11 +9,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         :root {
-            --burgundy-600: #4D1520;
+            /* Primary Palette */
+            --burgundy: #4D1520;
+            --deep-burgundy: #2F080F;
+            --dawn: #FAFFA7;
+            --canvas: #FBFAF4;
+            --stone: #F2EDE8;
+            /* Secondary Palette */
+            --warm-stone: #F4EAE1;
+            --sunrise: #FF843D;
+            --sun: #FFFF7D;
+            /* Legacy aliases (backwards compatibility) */
+            --burgundy-600: var(--burgundy);
             --burgundy-400: #825B63;
-            --yellow-100: #FEFFE1;
-            --yellow-200: #FAFFA7;
-            --yellow-300: #FFFF7D;
+            --yellow-100: var(--canvas);
+            --yellow-200: var(--dawn);
+            --yellow-300: var(--sun);
+            --accent-orange: var(--sunrise);
+            --accent-cream: var(--warm-stone);
         }
 
         * {
@@ -185,11 +198,11 @@
         }
 
         .dso-highlight {
-            background: linear-gradient(135deg, #1a5f4a 0%, #2e7d32 100%);
+            background: linear-gradient(to left, var(--sunrise) 0%, var(--burgundy) 100%);
         }
 
         .payback-highlight {
-            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+            background: linear-gradient(to left, var(--sunrise) 0%, var(--warm-stone) 100%);
         }
 
         .roi-label {
@@ -660,11 +673,11 @@
         }
 
         .pdf-hero-box.green {
-            background: linear-gradient(135deg, #1a5f4a 0%, #2e7d32 100%);
+            background: linear-gradient(270deg, #FF843D 0%, #4D1520 100%);
         }
 
         .pdf-hero-box.blue {
-            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+            background: linear-gradient(270deg, #FF843D 0%, #F4EAE1 100%);
         }
 
         .pdf-hero-label {
@@ -771,7 +784,7 @@
         }
 
         .pdf-dso-bar.projected {
-            background: linear-gradient(90deg, #1a5f4a 0%, #2e7d32 100%);
+            background: linear-gradient(90deg, #FF843D 0%, #4D1520 100%);
         }
 
         .pdf-dso-value {
@@ -843,35 +856,21 @@
             font-weight: 700;
         }
 
-        /* Efficiency Table */
-        .pdf-efficiency-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 9px;
-        }
-
-        .pdf-efficiency-table th,
-        .pdf-efficiency-table td {
-            padding: 5px 8px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        .pdf-efficiency-table th {
-            font-weight: 600;
-            color: #825B63;
-            text-transform: uppercase;
+        .pdf-auto-total {
             font-size: 8px;
-            background: #f8f8f8;
+            color: #888;
+            margin-top: 4px;
+            font-style: italic;
         }
 
-        .pdf-efficiency-table td {
-            color: #333;
-        }
-
-        .pdf-efficiency-table td.highlight {
-            color: #1a5f4a;
-            font-weight: 600;
+        .pdf-dso-note,
+        .pdf-automation-note {
+            font-size: 9px;
+            color: #666;
+            line-height: 1.4;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
         }
 
         .pdf-improvement-item {
@@ -1042,23 +1041,23 @@
                 <div class="hero-highlight">
                     <div class="roi-label">
                         <span class="roi-label-wrapper">
-                            Return on Investment
+                            Total Annual Benefits
                             <span class="info-icon">i</span>
-                            <span class="tooltip">ROI = ((Team Capacity Unlocked + Leakage Savings) − Daylit X Cost) ÷ Daylit X Cost × 100. Working capital freed is reported separately as it represents one-time balance sheet improvement.</span>
+                            <span class="tooltip">Combined annual value including savings and investment returns. Formula: Team Capacity Unlocked + Leakage Savings + Opportunity Gained. This is the full value Daylit X delivers annually.</span>
                         </span>
                     </div>
-                    <div class="roi-value" id="roi-value">0%</div>
+                    <div class="roi-value" id="total-savings">$0</div>
                 </div>
 
                 <div class="secondary-highlights">
                     <div class="secondary-highlight dso-highlight">
-                        <div class="roi-label">
-                            <span class="roi-label-wrapper">
+                    <div class="roi-label">
+                        <span class="roi-label-wrapper">
                                 DSO Improvement
-                                <span class="info-icon">i</span>
+                            <span class="info-icon">i</span>
                                 <span class="tooltip">Days Sales Outstanding reduction with Daylit X. Formula: Current DSO × Dynamic Reduction (30-50% based on team workload). Overloaded teams see higher improvement. Lower DSO means faster cash collection.</span>
-                            </span>
-                        </div>
+                        </span>
+                    </div>
                         <div class="roi-value" id="dso-improvement">0 days</div>
                     </div>
                     <div class="secondary-highlight payback-highlight">
@@ -1087,7 +1086,7 @@
                         <div class="metric-label-wrapper">
                             <span class="metric-label">Team Capacity Unlocked</span>
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Value of team capacity freed by A/R automation. Formula: Headcount × Hours on Invoices × Time Saved × Hourly Rate. This capacity can be redirected to customer relationships and strategic work.</span>
+                            <span class="tooltip">Value of team capacity freed by A/R automation. Formula: Headcount × Hours on Invoices × Time Saved × Hourly Rate × Volume Factor. Teams handling more than 400 invoices/person see up to 25% higher savings (overloaded teams benefit more from automation).</span>
                         </div>
                     </div>
                     <div class="metric-card">
@@ -1111,23 +1110,19 @@
                         <div class="metric-label-wrapper">
                             <span class="metric-label">Opportunity Gained</span>
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Potential returns if savings were invested. Formula: Total Annual Savings × 10% (S&P 500 historical average). Represents the growth you miss by not capturing these savings sooner.</span>
+                            <span class="tooltip">Potential returns from reinvesting freed working capital. Formula: Working Capital Freed × 10% (S&P 500 historical average). Faster cash collection unlocks capital that can be deployed for growth.</span>
                         </div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value" id="total-savings">$0</div>
+                        <div class="metric-value" id="roi-value">0%</div>
                         <div class="metric-label-wrapper">
-                            <span class="metric-label">Total Annual Savings</span>
+                            <span class="metric-label">Return on Investment</span>
                             <span class="info-icon">i</span>
-                            <span class="tooltip">Combined recurring annual value. Formula: Team Capacity Unlocked + Leakage Savings. This is the total used for ROI calculation.</span>
+                            <span class="tooltip">Conservative ROI based on direct savings only. Formula: ((Team Capacity + Leakage Savings) − Cost) ÷ Cost × 100. Opportunity Gained is included in Total Annual Benefits but excluded from ROI for a defensible calculation.</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="price-info">
-                    <span class="price-label">Daylit X Annual Investment</span>
-                    <span class="price-value" id="annual-price">$0</span>
-                </div>
 
                 <!-- PDF Download Section -->
                 <div class="pdf-download-section" id="pdf-download-section">
@@ -1203,8 +1198,8 @@
                 <div class="pdf-section-title">Executive Summary</div>
                 <div class="pdf-hero-metrics">
                     <div class="pdf-hero-box primary">
-                        <div class="pdf-hero-label">Return on Investment</div>
-                        <div class="pdf-hero-value" id="pdf-roi">0%</div>
+                        <div class="pdf-hero-label">Total Annual Benefits</div>
+                        <div class="pdf-hero-value" id="pdf-total-savings-hero">$0</div>
                     </div>
                     <div class="pdf-hero-box green">
                         <div class="pdf-hero-label">DSO Improvement</div>
@@ -1241,8 +1236,8 @@
                         <div class="pdf-metric-label">Opportunity Gained</div>
                     </div>
                     <div class="pdf-metric-box">
-                        <div class="pdf-metric-value" id="pdf-total-savings">$0</div>
-                        <div class="pdf-metric-label">Total Annual Value</div>
+                        <div class="pdf-metric-value" id="pdf-roi">0%</div>
+                        <div class="pdf-metric-label">Return on Investment</div>
                     </div>
                 </div>
             </div>
@@ -1276,6 +1271,7 @@
                                 <div class="pdf-dso-value" id="pdf-dso-projected-value">0 days</div>
                             </div>
                         </div>
+                        <p class="pdf-dso-note">Lower DSO means faster cash collection. Every day reduced unlocks working capital that can be reinvested in growth.</p>
                     </div>
                     <!-- Automation & Efficiency -->
                     <div class="pdf-chart-half">
@@ -1285,42 +1281,22 @@
                                 <svg class="pdf-donut-svg" viewBox="0 0 100 100" id="pdf-donut-svg">
                                     <circle class="pdf-donut-bg" cx="50" cy="50" r="40" fill="none" stroke="#f0f0f0" stroke-width="20"/>
                                     <circle class="pdf-donut-slice" id="pdf-slice-manual" cx="50" cy="50" r="40" fill="none" stroke="#4D1520" stroke-width="20"/>
-                                    <circle class="pdf-donut-slice" id="pdf-slice-auto" cx="50" cy="50" r="40" fill="none" stroke="#1a5f4a" stroke-width="20"/>
+                                    <circle class="pdf-donut-slice" id="pdf-slice-auto" cx="50" cy="50" r="40" fill="none" stroke="#FF843D" stroke-width="20"/>
                                 </svg>
                             </div>
                             <div class="pdf-automation-legend">
                                 <div class="pdf-auto-item">
-                                    <span class="pdf-auto-dot" style="background: #1a5f4a;"></span>
-                                    <span class="pdf-auto-label"><strong id="pdf-auto-pct">80%</strong> Automated</span>
+                                    <span class="pdf-auto-dot" style="background: #FF843D;"></span>
+                                    <span class="pdf-auto-label"><strong id="pdf-auto-count">0</strong> (<span id="pdf-auto-pct">80%</span>) Automated</span>
                                 </div>
                                 <div class="pdf-auto-item">
                                     <span class="pdf-auto-dot" style="background: #4D1520;"></span>
-                                    <span class="pdf-auto-label"><strong id="pdf-manual-pct">20%</strong> Manual</span>
+                                    <span class="pdf-auto-label"><strong id="pdf-manual-count">0</strong> (<span id="pdf-manual-pct">20%</span>) Manual</span>
                                 </div>
+                                <div class="pdf-auto-total">of <span id="pdf-invoice-total">0</span> invoices/mo</div>
                             </div>
                         </div>
-                        <div class="pdf-chart-title" style="margin-top: 12px;">Efficiency Gains</div>
-                        <table class="pdf-efficiency-table">
-                            <thead>
-                                <tr>
-                                    <th>Metric</th>
-                                    <th>Today</th>
-                                    <th>With Daylit X</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Time/Invoice</td>
-                                    <td id="pdf-eff-time-before">15 min</td>
-                                    <td id="pdf-eff-time-after" class="highlight">3 min</td>
-                                </tr>
-                                <tr>
-                                    <td>Collection Rate</td>
-                                    <td id="pdf-eff-rate-before">97%</td>
-                                    <td id="pdf-eff-rate-after" class="highlight">99%+</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <p class="pdf-automation-note">Daylit X automates invoice delivery, payment reminders, and collection follow-ups — freeing your team to focus on strategic work.</p>
                     </div>
                 </div>
             </div>
@@ -1374,8 +1350,8 @@
 
         // Tiering and pricing (ARR-based)
         const TIERS = [
-            { name: "Small", lower: 0, upper: 25_000_000, price: 12_000 },
-            { name: "Middle Market", lower: 25_000_000, upper: 50_000_000, price: 60_000 },
+            { name: "Small", lower: 0, upper: 25_000_000, price: 18_000 },
+            { name: "Middle Market", lower: 25_000_000, upper: 50_000_000, price: 48_000 },
             { name: "Enterprise", lower: 50_000_000, upper: Infinity, price: 100_000 }
         ];
 
@@ -1538,16 +1514,27 @@
 
             // Calculate metrics
             const cashFlowImprovement = computeCashFlowImprovement(inputs, dsoReductionPct);
-            const manualWorkSavings = computeAnnualizedEmployeeSavings(inputs);
-            const productivityHoursSaved = computeProductivityHoursSaved(inputs);
+            
+            // Volume factor: boost savings when team is overloaded (>400 invoices/person)
+            const invoicesPerPerson = inputs.monthly_invoices / inputs.ar_headcount;
+            const maxCapacity = 400; // max invoices per person per month
+            const volumeFactor = invoicesPerPerson > maxCapacity 
+                ? Math.min(invoicesPerPerson / maxCapacity, 1.25)  // Cap at 1.25x (can't exceed 100% of wages)
+                : 1.0;
+            
+            const manualWorkSavings = computeAnnualizedEmployeeSavings(inputs) * volumeFactor;
+            const productivityHoursSaved = computeProductivityHoursSaved(inputs) * volumeFactor;
             const leakageSavings = computeLeakageSavings(inputs);
 
-            // ROI excludes freed cash
-            const totalBenefit = manualWorkSavings + leakageSavings;
-            const roiPct = computeRoiPct(totalBenefit, annualPrice);
+            // ROI based on direct savings only (conservative, defensible)
+            const directSavings = manualWorkSavings + leakageSavings;
+            const roiPct = computeRoiPct(directSavings, annualPrice);
 
-            // Opportunity cost
-            const opportunityCost = totalBenefit * ASSUMPTIONS.cost_of_capital_annual_pct;
+            // Opportunity cost (based on freed working capital that can be reinvested)
+            const opportunityCost = cashFlowImprovement * ASSUMPTIONS.cost_of_capital_annual_pct;
+            
+            // Total Annual Benefits includes opportunity gained
+            const totalAnnualBenefits = directSavings + opportunityCost;
 
             // Generate industry benchmark comparison
             const benchmarkDSO = getIndustryBenchmarkDSO(inputs.industry);
@@ -1566,16 +1553,16 @@
             // Industry/market benchmark comparison - always show
             let benchmarkStatus = '';
             let benchmarkWhy = '';
-            let currentDsoColor = inputs.current_dso_days > benchmarkDSO ? '#c62828' : '#2e7d32';  // Red if behind, green if ahead
+            let currentDsoColor = inputs.current_dso_days > benchmarkDSO ? '#c62828' : '#FF843D';  // Red if behind, orange if ahead
             
             if (inputs.current_dso_days > benchmarkDSO) {
                 benchmarkStatus = isOther ? 'Beat Market Average' : 'Beat Industry Average';
-                benchmarkWhy = `Your DSO of <span style="color: ${currentDsoColor}; font-weight: 600;">${inputs.current_dso_days} days</span> is <span style="color: #c62828; font-weight: 600;">${dsoAboveBenchmark} days above</span> the ${benchmarkLabel} of ${benchmarkDSO} days. With Daylit X, your projected DSO of <span style="color: #2e7d32; font-weight: 600;">${Math.round(projectedDSO)} days</span> would put you ${Math.abs(projectedDiff)} days ${projectedDiff < 0 ? 'ahead of' : 'within'} the benchmark.`;
+                benchmarkWhy = `Your DSO of <span style="color: ${currentDsoColor}; font-weight: 600;">${inputs.current_dso_days} days</span> is <span style="color: #c62828; font-weight: 600;">${dsoAboveBenchmark} days above</span> the ${benchmarkLabel} of ${benchmarkDSO} days. With Daylit X, your projected DSO of <span style="color: #FF843D; font-weight: 600;">${Math.round(projectedDSO)} days</span> would put you ${Math.abs(projectedDiff)} days ${projectedDiff < 0 ? 'ahead of' : 'within'} the benchmark.`;
                 } else {
                 benchmarkStatus = 'Extend Your Lead';
-                benchmarkWhy = `You're already <span style="color: #2e7d32; font-weight: 600;">${Math.abs(dsoAboveBenchmark)} days ahead</span> of the ${benchmarkLabel} of ${benchmarkDSO} days. With Daylit X, you could extend that lead to <span style="color: #2e7d32; font-weight: 600;">${Math.abs(projectedDiff)} days ahead</span>, setting a new competitive advantage.`;
-            }
-            
+                benchmarkWhy = `You're already <span style="color: #FF843D; font-weight: 600;">${Math.abs(dsoAboveBenchmark)} days ahead</span> of the ${benchmarkLabel} of ${benchmarkDSO} days. With Daylit X, you could extend that lead to <span style="color: #FF843D; font-weight: 600;">${Math.abs(projectedDiff)} days ahead</span>, setting a new competitive advantage.`;
+                }
+
             improvements.push({ 
                 id: 'benchmark',
                 icon: '🏆', 
@@ -1584,7 +1571,7 @@
                 features: [
                     `${isOther ? 'Market' : 'Industry'} benchmark: <span style="font-weight: 600;">${benchmarkDSO} days</span> DSO`,
                     `Your current DSO: <span style="color: ${currentDsoColor}; font-weight: 600;">${inputs.current_dso_days} days</span>`,
-                    `Projected with Daylit X: <span style="color: #2e7d32; font-weight: 600;">${Math.round(projectedDSO)} days</span>`,
+                    `Projected with Daylit X: <span style="color: #FF843D; font-weight: 600;">${Math.round(projectedDSO)} days</span>`,
                     sourceNote
                 ]
             });
@@ -1680,7 +1667,8 @@
                 productivityHoursSaved,
                 leakageSavings,
                 opportunityCost,
-                totalBenefit,
+                directSavings,
+                totalAnnualBenefits,
                 annualPrice,
                 projectedDSO,
                 improvements,
@@ -1694,10 +1682,10 @@
             const dsoImprovement = Math.round(inputs.current_dso_days * dsoReductionPct);
             document.getElementById('dso-improvement').textContent = dsoImprovement + " days";
             
-            // Payback period calculation with smart formatting
+            // Payback period calculation with smart formatting (based on direct savings)
             let paybackDisplay = "N/A";
-            if (totalBenefit > 0) {
-                const paybackMonths = (annualPrice / totalBenefit) * 12;
+            if (directSavings > 0) {
+                const paybackMonths = (annualPrice / directSavings) * 12;
                 if (paybackMonths < 12) {
                     paybackDisplay = paybackMonths.toFixed(1) + " mo";
                 } else {
@@ -1711,8 +1699,7 @@
             document.getElementById('hours-saved').textContent = formatNumber(productivityHoursSaved);
             document.getElementById('leakage-savings').textContent = formatCurrency(leakageSavings);
             document.getElementById('opportunity-cost-savings').textContent = formatCurrency(opportunityCost);
-            document.getElementById('total-savings').textContent = formatCurrency(totalBenefit);
-            document.getElementById('annual-price').textContent = formatCurrency(annualPrice);
+            document.getElementById('total-savings').textContent = formatCurrency(totalAnnualBenefits);
 
             // Show results
             document.getElementById('results').classList.add('visible');
@@ -1773,27 +1760,28 @@
             });
             
             // Executive summary
-            document.getElementById('pdf-roi').textContent = 
-                data.roiPct === Infinity ? "∞%" : data.roiPct.toFixed(1) + "%";
+            document.getElementById('pdf-total-savings-hero').textContent = formatCurrency(data.totalAnnualBenefits);
             document.getElementById('pdf-dso').textContent = 
                 Math.round(data.inputs.current_dso_days * data.dsoReductionPct) + " days";
             
+            // Payback period (based on direct savings)
             let paybackDisplay = "N/A";
-            if (data.totalBenefit > 0) {
-                const paybackMonths = (data.annualPrice / data.totalBenefit) * 12;
+            if (data.directSavings > 0) {
+                const paybackMonths = (data.annualPrice / data.directSavings) * 12;
                 paybackDisplay = paybackMonths < 12 
                     ? paybackMonths.toFixed(1) + " mo" 
                     : (paybackMonths / 12).toFixed(1) + " yr";
             }
             document.getElementById('pdf-payback').textContent = paybackDisplay;
-            
+
             // Value breakdown
             document.getElementById('pdf-working-capital').textContent = formatCurrency(data.cashFlowImprovement);
             document.getElementById('pdf-team-capacity').textContent = formatCurrency(data.manualWorkSavings);
             document.getElementById('pdf-hours-saved').textContent = formatNumber(data.productivityHoursSaved);
             document.getElementById('pdf-leakage').textContent = formatCurrency(data.leakageSavings);
             document.getElementById('pdf-opportunity').textContent = formatCurrency(data.opportunityCost);
-            document.getElementById('pdf-total-savings').textContent = formatCurrency(data.totalBenefit);
+            document.getElementById('pdf-roi').textContent = 
+                data.roiPct === Infinity ? "∞%" : data.roiPct.toFixed(1) + "%";
             
             // DSO Benchmark Chart
             const currentDso = data.inputs.current_dso_days;
@@ -1828,20 +1816,16 @@
             document.getElementById('pdf-slice-manual').setAttribute('stroke-dasharray', `${manualLen} ${circumference - manualLen}`);
             document.getElementById('pdf-slice-manual').setAttribute('stroke-dashoffset', `${-autoLen}`);
             
-            // Update legend percentages
+            // Update legend with invoice counts and percentages
+            const monthlyInvoices = data.inputs.monthly_invoices;
+            const automatedInvoices = Math.round(monthlyInvoices * automationPct);
+            const manualInvoices = monthlyInvoices - automatedInvoices;
+            
+            document.getElementById('pdf-auto-count').textContent = formatNumber(automatedInvoices);
+            document.getElementById('pdf-manual-count').textContent = formatNumber(manualInvoices);
             document.getElementById('pdf-auto-pct').textContent = Math.round(automationPct * 100) + '%';
             document.getElementById('pdf-manual-pct').textContent = Math.round(manualPct * 100) + '%';
-            
-            // Efficiency Table
-            const currentTimePerInvoice = 15; // minutes (assumption)
-            const afterTimePerInvoice = Math.round(currentTimePerInvoice * (1 - automationPct));
-            const currentCollectionRate = Math.round((1 - data.inputs.bad_debt_pct) * 100);
-            const afterCollectionRate = Math.min(99, currentCollectionRate + Math.round(data.inputs.bad_debt_pct * ASSUMPTIONS.revenue_leakage_reduction_pct * 100));
-            
-            document.getElementById('pdf-eff-time-before').textContent = currentTimePerInvoice + ' min';
-            document.getElementById('pdf-eff-time-after').textContent = afterTimePerInvoice + ' min';
-            document.getElementById('pdf-eff-rate-before').textContent = currentCollectionRate + '%';
-            document.getElementById('pdf-eff-rate-after').textContent = afterCollectionRate + '%+';
+            document.getElementById('pdf-invoice-total').textContent = formatNumber(monthlyInvoices);
             
             // Improvements
             let improvementsHTML = '';
